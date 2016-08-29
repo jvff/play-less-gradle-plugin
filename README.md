@@ -20,9 +20,8 @@ Using the common plugin mechanism:
                 url "https://plugins.gradle.org/m2/"
             }
         }
-
         dependencies {
-            classpath "gradle.plugin.jvff:play-less:0.0.1"
+            classpath "gradle.plugin.com.janitovff:project:0.0.1"
         }
     }
 
