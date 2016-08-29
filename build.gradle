@@ -4,6 +4,7 @@ plugins {
 
     id 'org.ajoberstar.grgit' version '1.5.1'
     id 'org.ajoberstar.release-opinion' version '1.5.1'
+    id 'com.gradle.plugin-publish' version '0.9.5'
 }
 
 repositories {
@@ -17,6 +18,8 @@ dependencies {
     compile 'com.github.sommeri:less4j:1.17.2'
 }
 
+group = 'com.janitovff'
+
 publishing {
     repositories {
         mavenLocal()
@@ -24,10 +27,21 @@ publishing {
 
     publications {
         mavenJava(MavenPublication) {
-            groupId 'com.janitovff'
-            artifactId 'play-less-gradle-plugin'
-
             from components.java
+        }
+    }
+}
+
+pluginBundle {
+    website = 'http://github.com/jvff/play-less-gradle-plugin'
+    vcsUrl = 'http://github.com/jvff/play-less-gradle-plugin'
+    description = 'Use Less stylesheets with the Play! framework'
+    tags = ['less', 'play']
+
+    plugins {
+        playLessPlugin {
+            id = 'com.janitovff.play-less'
+            displayName = 'Play Less Gradle plugin'
         }
     }
 }
