@@ -1,6 +1,9 @@
 plugins {
     id 'groovy'
     id 'maven-publish'
+
+    id 'org.ajoberstar.grgit' version '1.5.1'
+    id 'org.ajoberstar.release-opinion' version '1.5.1'
 }
 
 repositories {
@@ -12,4 +15,19 @@ dependencies {
     compile localGroovy()
 
     compile 'com.github.sommeri:less4j:1.17.2'
+}
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
+
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'com.janitovff'
+            artifactId 'play-less-gradle-plugin'
+
+            from components.java
+        }
+    }
 }
