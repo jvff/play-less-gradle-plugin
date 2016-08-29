@@ -29,9 +29,10 @@ Using the common plugin mechanism:
 
 ## Details
 
-The Less4j compiler is used. By default, the source set is configured to load
-files from "app/assets" that have the ".less" extension. This can be configured
-by using a custom `less` source set:
+The [Less4j](https://github.com/SomMeri/less4j) compiler is used to compile the
+Less stylesheets. By default, the source set is configured to load files from
+"app/assets" that have the ".less" extension. This can be configured by using a
+custom `less` source set:
 
     model {
         components {
