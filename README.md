@@ -21,7 +21,7 @@ Using the common plugin mechanism:
             }
         }
         dependencies {
-            classpath "gradle.plugin.com.janitovff:project:0.0.1"
+            classpath "gradle.plugin.com.janitovff:play-less-gradle-plugin:0.0.1"
         }
     }
 
