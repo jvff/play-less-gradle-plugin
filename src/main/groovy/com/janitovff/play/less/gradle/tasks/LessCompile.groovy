@@ -1,6 +1,5 @@
 package com.janitovff.play.less.gradle.tasks
 
-import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.SourceTask
 import org.gradle.api.tasks.TaskAction
@@ -14,12 +13,15 @@ public class LessCompile extends SourceTask {
     @OutputDirectory
     File outputDirectory
 
+    Set<File> srcDirs;
+
     @TaskAction
     void compile() {
         LessCompileSpec spec = new DefaultLessCompileSpec()
 
         spec.source = source
         spec.destinationDirectory = outputDirectory
+        spec.srcDirs = srcDirs
 
         LessCompiler compiler = new Less4jCompiler()
 

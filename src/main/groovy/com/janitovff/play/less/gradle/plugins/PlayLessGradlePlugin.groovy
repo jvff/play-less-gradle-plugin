@@ -146,8 +146,8 @@ public class PlayLessGradlePlugin implements Plugin<Project> {
                     File cssSourceDirectory = cssSourceSet.source.srcDirs[0]
 
                     lessCompile.source = sourceSet.source
-                    lessCompile.outputDirectory =
-                            new File(cssSourceDirectory, 'stylesheets')
+                    lessCompile.srcDirs = sourceSet.source.getSrcDirs()
+                    lessCompile.outputDirectory = cssSourceDirectory
 
                     binary.assets.builtBy(lessCompile)
 

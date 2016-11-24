@@ -7,4 +7,5 @@ import com.janitovff.play.less.gradle.language.less.LessCompileSpec
 public class DefaultLessCompileSpec implements LessCompileSpec {
     FileCollection source
     File destinationDirectory
+    Set<File> srcDirs
 }

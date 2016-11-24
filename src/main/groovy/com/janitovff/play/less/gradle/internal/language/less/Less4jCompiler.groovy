@@ -10,6 +10,8 @@ import com.github.sommeri.less4j.LessCompiler.Problem
 import com.janitovff.play.less.gradle.language.less.LessCompiler
 import com.janitovff.play.less.gradle.language.less.LessCompileSpec
 
+import java.nio.file.Path
+
 public class Less4jCompiler implements LessCompiler {
     private DefaultLessCompiler compiler
 
@@ -76,7 +78,20 @@ public class Less4jCompiler implements LessCompiler {
     private File getOutputCssFileFor(File lessFile, LessCompileSpec spec) {
         String cssFileName = lessFile.name.replaceFirst("[.]less\$", ".css")
 
-        return new File(spec.destinationDirectory, cssFileName)
+        Path lessFilePath = lessFile.getParentFile().toPath();
+        for (File srcDir : spec.getSrcDirs()) {
+            Path srcPath = srcDir.toPath()
+            if (lessFilePath.startsWith(srcPath)) {
+                Path relative = srcPath.relativize(lessFilePath);
+                Path outputPath = spec.destinationDirectory.toPath();
+                Path outputSubFolderPath = outputPath.resolve(relative);
+                File outputSubFolder = outputSubFolderPath.toFile();
+                outputSubFolder.mkdirs();
+                return new File(outputSubFolder, cssFileName);
+            }
+        }
+
+        throw new RuntimeException("Could not resolve src root folder for matching less file '" + lessFile.getAbsolutePath() + "'");
     }
 
     private void writeResultingCssToFile(String css, File cssFile) {
