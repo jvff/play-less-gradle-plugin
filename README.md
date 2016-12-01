@@ -9,7 +9,7 @@ application.
 Using the new plugin mechanism (requires Gradle 2.1 or later):
 
     plugins {
-        id "com.janitovff.play-less" version "0.0.1"
+        id "com.janitovff.play-less" version "0.0.2"
     }
 
 Using the common plugin mechanism:
@@ -21,7 +21,7 @@ Using the common plugin mechanism:
             }
         }
         dependencies {
-            classpath "gradle.plugin.com.janitovff:play-less-gradle-plugin:0.0.1"
+            classpath "gradle.plugin.com.janitovff:play-less-gradle-plugin:0.0.2"
         }
     }
 
